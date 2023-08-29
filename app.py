@@ -23,7 +23,8 @@ def contact():
 # Validation page
 @app.route("/validation")
 def loan_val():
-    return render_template("loan val.html")
+    # Changed loan val to loan_val.html
+    return render_template("loan_val.html")
 
 # Prediciton button
 @app.route("/predict", methods=["POST"])
@@ -36,7 +37,7 @@ def predict():
 
     valid = ["No", "Yes"]
     # print(f"Eligible for loan??: {valid[output]}")
-    return render_template("loan val.html", prediction_text="Eligible to receieve a loan: {}".format(valid[output]))
+    return render_template("loan_val.html", prediction_text="Eligible to receieve a loan: {}".format(valid[output]))
 
 
 
