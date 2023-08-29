@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2"> -->
+    
+    <title>OG Loan</title>
+
+    <!-- <link rel="stylesheet" mimetype="text/css" href= "{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='bootstrap.min.css') }}"> -->
+
+
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='OYA.png') }}">
+    <link href="../static/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    
+       
+  </head>
+  <!-- removed text center -->
+  <body class="d-flex h-200 text-bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto text-center">
+        <div>
+          <h3 class="float-md-start mb-0">OG Loan</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="{{ url_for('home')}}">Home</a>
+            <a class="nav-link fw-bold py-1 px-0" href="{{ url_for('loan_val')}}">Loan Validation</a>
+            <a class="nav-link fw-bold py-1 px-0" href="{{ url_for('contact')}}">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+
+      <!-- Form starts -->
+      <form class="mt-5" action="{{ url_for('predict')}}" method="post">
+        <div class="row">
+
+          <!-- Number of dependents -->
+          <div class="col-md-6 themed-grid-col">
+            <div class="mb-3">
+              <label for="dependent" class="form-label">Number of dependents</label>
+              <input class="form-control" type="number" id="dependent" name="dependents">
+              <div class="form-text">Please input the correct numbers of dependents</div>
+            </div>
+          </div>
+
+          <!-- Total yearly income -->
+          <div class="col-md-6 themed-grid-col">
+            <div class="mb-3">
+              <label for="income" class="form-label">Total yearly income in $</label>
+              <input class="form-control" type="number" id="income" name="incomes">
+              <div class="form-text">Please input your yearly income in dollars $</div>
+            </div>
+          </div>
+
+          <!-- Credit history -->
+          <div class="col-md-6 themed-grid-col">
+            <div class="mb-3">
+              <label for="credit" class="form-label">Credit history</label>
+              <input class="form-control" type="number" id="credit" name="creditHistory">
+              <div class="form-text">Please input the accurate credit history</div>
+            </div>
+          </div>
+
+          <!-- Loan duration in days -->
+          <div class="col-md-6 themed-grid-col"> 
+            <div class="mb-3">
+              <label for="loan" class="form-label">Loan duration in days</label>
+              <input class="form-control" type="number" id="loan" name="loanDuration">
+              <div class="form-text">Loan duration in days</div>
+            </div>
+          </div>
+
+          <!-- Loan amount in $ -->
+          <div class="col-md-6 themed-grid-col">
+            <div class="mb-3">
+              <label for="loanamount" class="form-label">Loan amount in $</label>
+              <input class="form-control" type="number" id="loanamount" name="loanAmount">
+              <div class="form-text">Please input the loan amount in dollars $</div>
+            </div>
+          </div>
+
+          <!-- Property area -->
+          <div class="col-md-6 themed-grid-col">
+            <fieldset class="mb-3">
+              <legend>Property area</legend>
+              <div class="form-check">
+                <input type="radio" name="property" class="form-check-input" id="urban" value="0">
+                <label class="form-check-label" for="urban">Urban</label>
+              </div>
+    
+              <div class="form-check">
+                <input type="radio" name="property" class="form-check-input" id="rural" value="1">
+                <label class="form-check-label" for="rural">Rural</label>
+              </div>
+    
+              <div class="mb-3 form-check">
+                <input type="radio" name="property" class="form-check-input" id="semi" value="2">
+                <label class="form-check-label" for="semi">Semi-rural</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Gender -->
+          <div class="col-md-6 themed-grid-col">
+            <fieldset class="mb-3">
+              <legend>Gender</legend>
+              <div class="form-check">
+                <input type="radio" name="gender" class="form-check-input" id="female" value="1">
+                <label class="form-check-label" for="female">Female</label>
+              </div>
+    
+              <div class="mb-3 form-check">
+                <input type="radio" name="gender" class="form-check-input" id="male" value="0">
+                <label class="form-check-label" for="male">Male</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Relationship status -->
+          <div class="col-md-6 themed-grid-col">
+            <fieldset class="mb-3">
+              <legend>Relationship status</legend>
+              <div class="form-check">
+                <input type="radio" name="relationship" class="form-check-input" id="married" value="1">
+                <label class="form-check-label" for="married">Married</label>
+              </div>
+    
+              <div class="mb-3 form-check">
+                <input type="radio" name="relationship" class="form-check-input" id="notmarried" value="0">
+                <label class="form-check-label" for="notmarried">Not married</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Educational Status -->
+          <div class="col-md-6 themed-grid-col">
+            <fieldset class="mb-3">
+              <legend>Educational status</legend>
+              <div class="form-check">
+                <input type="radio" name="education" class="form-check-input" id="grad" value="1">
+                <label class="form-check-label" for="grad">Graduate</label>
+              </div>
+    
+              <div class="mb-3 form-check">
+                <input type="radio" name="education" class="form-check-input" id="nongrad" value="0">
+                <label class="form-check-label" for="nongrad">Not Graduate</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <!-- Self Employed -->
+          <div class="col-md-6 themed-grid-col">
+            <fieldset class="mb-3">
+              <legend>Self-employed</legend>
+              <div class="form-check">
+                <input type="radio" name="selfemployed" class="form-check-input" id="self_employed" value="1">
+                <label class="form-check-label" for="self_employed">Yes</label>
+              </div>
+    
+              <div class="mb-3 form-check">
+                <input type="radio" name="selfemployed" class="form-check-input" id="selfEmployed" value="0">
+                <label class="form-check-label" for="selfEmployed">No</label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+
+        <!-- Submitting and clearing the form -->
+        <div class="text-center mb-5">
+          <button type="reset" class="btn btn-light">Clear</button>
+          <button type="submit" class="btn btn-light"><b>Predict</b></button>
+        </div>
+
+      </form>
+
+      <!-- Don't forget to style this section -->
+      <p> {{ prediction_text }} </p>
+      
+      <!-- Footer -->
+      <footer class="mt-auto text-white-50 text-center">
+        <p>Designed by <a href="https://oluwaseun-ogundeko.netlify.app/" class="text-white">Ogundeko Oluwaseun</a> on twitter as <a href="https://twitter.com/iamzadon" class="text-white">@iamzadon</a>.</p>
+      </footer>
+    </div>
+
+   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"> </script> -->
+
+
+    
+  </body>
+</html>
