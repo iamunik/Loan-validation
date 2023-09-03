@@ -5,26 +5,30 @@ import joblib
 
 
 app = Flask(__name__)
-
+app.static_folder = 'static'
 
 # Load the already trained ML model
 model = joblib.load("loan_model.pkl")
+
 
 # Index page
 @app.route("/")
 def home():
     return render_template("index.html")
 
+
 # Contact us page
 @app.route("/contact")
 def contact():
     return render_template("contact.html")
+
 
 # Validation page
 @app.route("/validation")
 def loan_val():
     # Changed loan val to loan_val.html
     return render_template("loan_val.html")
+
 
 # Prediciton button
 @app.route("/predict", methods=["POST"])
@@ -37,10 +41,7 @@ def predict():
 
     valid = ["No", "Yes"]
     # print(f"Eligible for loan??: {valid[output]}")
-    return render_template("loan_val.html", prediction_text="Eligible to receieve a loan: {}".format(valid[output]))
-
-
-
+    return render_template("loan_val.html", prediction_text=f"Eligible to receive a loan: {valid[output]}")
 
 
 if __name__ == "__main__":
