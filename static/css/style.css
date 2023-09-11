@@ -108,5 +108,29 @@ body {
   }
 }
 
-  /* Validation angu */
-  
+/* Prediction text */
+.p_red_ict{
+  text-align: center;
+}
+
+.filler{
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+  margin-right: 20px;
+  background-color: whitesmoke;
+}
+
+.filler2{
+  text-decoration: none;
+  padding: 10px;
+  color: black;
+  margin-left: 20px;
+  background-color: whitesmoke;
+}
+
+.filler:hover, .filler2:hover{
+  transition: all ease-in-out 0.3s;
+  background-color: rgb(110, 110, 110);
+  color: white;
+}
