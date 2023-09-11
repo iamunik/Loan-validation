@@ -7,9 +7,13 @@
 
 
   <title>OG Loan</title>
-  <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='style.css') }}">
-  <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='bootstrap.min.css') }}">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='OYA.png') }}">
+
+  <!-- <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+
+  <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 
 </head>
 
@@ -19,9 +23,15 @@
       <div>
         <h3 class="float-md-start mb-0">OG Loan</h3>
         <nav class="nav nav-masthead justify-content-center float-md-end">
-          <a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="{{ url_for('home')}}">Home</a>
-          <a class="nav-link fw-bold py-1 px-0" href="{{ url_for('loan_val')}}">Loan Validation</a>
-          <a class="nav-link fw-bold py-1 px-0" href="{{ url_for('contact')}}">Contact</a>
+
+          <!-- <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="index.html">Home</a>
+          <a class="nav-link fw-bold py-1 px-0" href="selection.html">Loan Validation</a>
+          <a class="nav-link fw-bold py-1 px-0 active" href="">Contact</a> -->
+
+
+          <a class="nav-link fw-bold py-1 px-0" aria-current="page" href="{{ url_for('home')}}">Home</a>
+          <a class="nav-link fw-bold py-1 px-0" href="{{ url_for('selection')}}">Loan Validation</a>
+          <a class="nav-link fw-bold py-1 px-0 active" href="">Contact</a>
         </nav>
       </div>
     </header>
