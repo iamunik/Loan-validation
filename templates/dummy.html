@@ -34,15 +34,13 @@
       </header>
 
       <main class="px-3">
-        <h3 class="mb-5">Please follow the guidelines presented to arrange your data properly.</h3>
+        <h3 class="mb-5">Please follow the <a href="{{ url_for('rules') }}">guidelines</a> presented to arrange your data properly.</h3>
         <form action="/upload" method="POST" enctype="multipart/form-data">
             <input type="file" name="file"><br><br>
             <button class="btn btn-light" type="submit">Upload and Predict</button>
         </form>
         <br>
-        <p class="text-center fw-bold"> {{ error_1 }} </p>
-        <p class="text-center fw-bold"> {{ error_2 }} </p>
-        <p class="text-center fw-bold"> {{ error_3 }} </p>
+        <p class="text-center fw-bold"> {{ error_ }} </p>
         <p class="text-center fw-bold"> {{ pred }} </p>
         {{ tabs | safe }} 
       </main>
