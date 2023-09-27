@@ -96,7 +96,7 @@ def upload():
     except UnicodeDecodeError:
         return render_template("dummy.html", error_="Cannot upload file please check the guidelines page")
     except zipfile.BadZipfile:
-        return render_template("dummy.html", error_="Cannot upload file please guidelines page")
+        return render_template("dummy.html", error_="Cannot upload file please check the guidelines page")
 
     # Check if the columns on the file uploaded matches what we want.
     for i in range(len(cols)):
