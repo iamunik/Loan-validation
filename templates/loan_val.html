@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>OG Loan</title>
-    <!-- <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}">
 
-
   </head>
+  
   <!-- removed text center -->
   <body class="d-flex h-200 text-bg-dark">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -35,7 +35,8 @@
 
 
       <!-- Form starts -->
-      <form class="mt-5" action="{{ url_for('predict')}}" method="post">
+      <form class="mt-5" action="{{ url_for('predict')}}" method="POST" id="GFG">
+        <!-- <form> -->
         <div class="row">
 
           <!-- Number of dependents -->
@@ -172,18 +173,121 @@
         <!-- Submitting and clearing the form -->
         <div class="text-center mb-5">
           <button type="reset" class="btn btn-light">Clear</button>
-          <button type="submit" class="btn btn-light"><b>Predict</b></button>
+          <button type="submit" class="btn btn-light" ><a href="#popup1"><b>Predict</b></a></button>
         </div>
 
-      </form>
+      </form> 
+
+<!-- Modal -->
+<!-- <div id="predictionModal" class="modal">
+  <div class="modal-content">
+    <span class="close" id="closeModal">&times;</span>
+    <p id="predictionText">Loading prediction...</p>
+  </div>
+</div> -->
+
+      <!-- POP UP WAS ADDED HERE,It works on normal css but not on flask -->
+      <!-- <div id="popup" class="hidden"> -->
+        <!-- Popup content will go here -->
+        <!-- <h2>LOAN ELIGIBILITY:</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+          {{ prediction_text }}
+          {{ error_3 }}
+        </div>
+      </div> -->
+      
+
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>LOAN ELIGIBILITY:</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            {{ prediction_text }}
+            {{ error_3 }}
+          </div>
+        </div>
+      </div>
 
       <!-- Don't forget to style this section -->
-      <p class="text-center mb-5 fw-bold"> {{ prediction_text }} </p>
+      <!-- <p class="text-center mb-5 fw-bold"> {{ prediction_text }} </p>
+      <p>{{ error_3 }}</p> -->
       
       <!-- Footer -->
       <footer class="mt-auto text-white-50 text-center">
         <p>Designed by <a href="https://oluwaseun-ogundeko.netlify.app/" class="text-white">Ogundeko Oluwaseun</a> on twitter as <a href="https://twitter.com/iamzadon" class="text-white">@iamzadon</a>.</p>
       </footer>
     </div>
+    <!-- <script>
+      function myFunction() {
+          document.getElementById("GFG").submit();
+      }
+  </script> -->
+ 
+  <!-- <script>
+    // Function to show the popup
+    function showPopup(content) {
+      const popup = document.getElementById("popup");
+      popup.innerHTML = content;
+      popup.classList.remove("hidden");
+    }
+  
+    // Function to hide the popup
+    function hidePopup() {
+      const popup = document.getElementById("popup");
+      popup.classList.add("hidden");
+    }
+  
+    // Function to fetch prediction from Flask backend
+    function getPrediction() {
+      fetch("/predict", {
+        method: "POST", // or "POST" if your Flask route uses POST
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          showPopup(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching prediction:", error);
+        });
+    }
+  </script> -->
+  
+  <!-- <script>
+    // Get references to the modal elements
+const modal = document.getElementById('predictionModal');
+const predictionText = document.getElementById('predictionText');
+const closeModal = document.getElementById('closeModal');
+const showPopupButton = document.getElementById('showPopupButton');
+
+// Function to show the modal
+function showModal() {
+  modal.style.display = 'block';
+}
+
+// Function to hide the modal
+function hideModal() {
+  modal.style.display = 'none';
+}
+
+// Close the modal when the close button is clicked
+closeModal.onclick = hideModal;
+
+// Make an AJAX request to the Flask backend when the button is clicked
+showPopupButton.onclick = function() {
+  // Make an AJAX request to your Flask backend
+  fetch('/predict')
+    .then(response => response.json())
+    .then(data => {
+      predictionText.textContent = data.prediction;
+      showModal();
+    })
+    .catch(error => {
+      console.error('Error fetching prediction:', error);
+    });
+};
+
+  </script> -->
   </body>
+  
 </html>
