@@ -1,5 +1,6 @@
 import pandas as pd
 from sklearn import preprocessing
+import pathlib
 
 
 def fill_nan(table):        # Filling empty columns and rows
@@ -68,3 +69,21 @@ def p_mapping(i_d, prediction):         # Mapping out the final result of the pr
     new_df = pd.DataFrame(data)
     new_df['Loan_Status'] = new_df['Loan_Status'].map({0: "No", 1: "Yes"}).astype(object)
     return new_df
+
+
+def detect_file_type(file):
+    f_name = file.filename
+    file_name = pathlib.Path(f_name).suffix
+    return file_name
+
+
+def check_file_type(file_type, file):
+    if file_type == ".csv":
+        df = pd.read_csv(file)
+        col = list(df.columns)
+        return col
+    elif file_type == ".xlsx" or ".xls":
+        df = pd.read_excel(file, engine='openpyxl')
+        col = list(df.columns)
+        return col
+
