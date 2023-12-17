@@ -29,8 +29,8 @@ def fill_nan(table):        # Filling empty columns and rows
     # Drop the LOAN ID on the csv file
     table.drop(['Loan_ID'], axis=1, inplace=True)
     # Creating Total Income column because that's what we trained it with
-    table['Total_Income'] = table['ApplicantIncome'] + table['CoapplicantIncome']
-    table.drop(['ApplicantIncome', 'CoapplicantIncome'], axis=1, inplace=True)
+    # table['Total_Income'] = table['ApplicantIncome'] + table['CoapplicantIncome']
+    # table.drop(['ApplicantIncome', 'CoapplicantIncome'], axis=1, inplace=True)
     return table
 
 
@@ -86,4 +86,3 @@ def check_file_type(file_type, file):
         df = pd.read_excel(file, engine='openpyxl')
         col = list(df.columns)
         return col
-
