@@ -1,0 +1,14 @@
+{
+    "builds": [
+        {
+            "src": "loan_validation/app.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "loan_validation/app.py"
+        }
+    ]
+}
