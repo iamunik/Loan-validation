@@ -11,7 +11,8 @@ app = Flask(__name__)
 # app.static_folder = 'static'
 
 # Load the already trained ML model
-model = joblib.load("loan_model.pkl")
+# model = joblib.load("loan_model.pkl")
+model = joblib.load("loan_model_class.pkl")
 
 
 # Index page
@@ -65,7 +66,13 @@ def predict():
     except ValueError:
         return render_template("loan_val.html", error_3="Please fill the form correctly")
     # print(f"Eligible for loan??: {valid[output]}")
-    return render_template("loan_val.html", prediction_text=f"Eligible to receive a loan: {valid[output]}\nPlease go to the nearest branch to finalise the loan")
+    # Add an if statement to see if eligibility is No to remove that nearest branch thing.
+    if valid[output] == "No":
+        return render_template("loan_val.html", prediction_text=f"Eligible to receive a loan: {valid[output]}\n"
+                                                                f"Sorry you are not eligible to get a loan")
+    else:
+        return render_template("loan_val.html", prediction_text=f"Eligible to receive a loan: {valid[output]}\n"
+                                                                f"Please go to the nearest branch to finalise the loan")
 
 
 @app.route('/upload', methods=['POST'])
@@ -96,12 +103,13 @@ def upload():
     except UnicodeDecodeError:
         return render_template("dummy.html", error_="Cannot upload file please check the guidelines page")
     except zipfile.BadZipfile:
-        return render_template("dummy.html", error_="Cannot upload file please check the guidelines page")
+        return render_template("dummy.html", error_="Acceptable files are .xls and .csv files, "
+                                                    "please check the guidelines page")
 
     # Check if the columns on the file uploaded matches what we want.
     for i in range(len(cols)):
         if not cols[i] in col:
-            return render_template("dummy.html", error_="Follow the procedure explained on the site")
+            return render_template("dummy.html", error_="Follow the procedure explained on the guideline page")
 
     # Assuming you're working with a CSV file
     if file:
@@ -111,10 +119,10 @@ def upload():
 
         # Make predictions using your model
         predictions = model.predict(abc)
-        predction = list(predictions)
+        prediction = list(predictions)
 
         # Mapping the prediction to make it presentable
-        mapas = condition.p_mapping(test_id, predction)
+        mapas = condition.p_mapping(test_id, prediction)
 
         # Returning the predictions to display them as needed
         return render_template("dummy.html", tabs=mapas.to_html())  # Display predictions as an HTML table
