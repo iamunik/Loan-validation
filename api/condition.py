@@ -58,16 +58,16 @@ def scale(table):           # Scaling down the dataframe
 
 
 def cleaner(table):         # Creating the clean table function from everything we have done
-    b = fill_nan(table)
-    a = mapping(b)
-    c = scale(a)
-    return c
+    clean_table = fill_nan(table)
+    map_table = mapping(clean_table)
+    scale_table = scale(map_table)
+    return scale_table
 
 
 def p_mapping(i_d, prediction):         # Mapping out the final result of the prediction
     data = {"Loan_ID": i_d, "Loan_Status": prediction}
     new_df = pd.DataFrame(data)
-    new_df['Loan_Status'] = new_df['Loan_Status'].map({0: "No", 1: "Yes"}).astype(object)
+    new_df['Loan_Status'] = new_df['Loan_Status'].map({0: "Not Eligible", 1: "Eligible"}).astype(object)
     return new_df
 
 
@@ -77,12 +77,12 @@ def detect_file_type(file):
     return file_name
 
 
-def check_file_type(file_type, file):
-    if file_type == ".csv":
-        df = pd.read_csv(file)
-        col = list(df.columns)
-        return col
-    elif file_type == ".xlsx" or ".xls":
-        df = pd.read_excel(file, engine='openpyxl')
-        col = list(df.columns)
-        return col
+# def check_file_type(file_type, file):
+#     if file_type == ".csv":
+#         df = pd.read_csv(file)
+#         col = list(df.columns)
+#         return col
+#     elif file_type == ".xlsx" or ".xls":
+#         df = pd.read_excel(file, engine='openpyxl')
+#         col = list(df.columns)
+#         return col
