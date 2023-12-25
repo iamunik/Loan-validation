@@ -8,10 +8,6 @@ from flask import Flask, render_template, request
 
 
 app = Flask(__name__)
-# app.static_folder = 'static'
-
-# Load the already trained ML model
-# model = joblib.load("loan_model.pkl")
 model = joblib.load("loan_model_class.pkl")
 
 
@@ -36,7 +32,6 @@ def rules():
 # User Validation page
 @app.route("/validation")
 def loan_val():
-    # Changed loan val to loan_val.html
     return render_template("loan_val.html")
 
 
@@ -52,7 +47,7 @@ def selection():
     return render_template("selection.html")
 
 
-# Prediciton button
+# Prediction button
 @app.route("/predict", methods=["POST"])
 def predict():
     try:
@@ -65,13 +60,12 @@ def predict():
         valid = ["No", "Yes"]
     except ValueError:
         return render_template("loan_val.html", error_3="Please fill the form correctly")
-    # print(f"Eligible for loan??: {valid[output]}")
-    # Add an if statement to see if eligibility is No to remove that nearest branch thing.
+
     if valid[output] == "No":
-        return render_template("loan_val.html", prediction_text=f"Eligible to receive a loan: {valid[output]}\n"
+        return render_template("loan_val.html", prediction_text=f"Loan Eligibility: {valid[output]}\n"
                                                                 f"Sorry you are not eligible to get a loan")
     else:
-        return render_template("loan_val.html", prediction_text=f"Eligible to receive a loan: {valid[output]}\n"
+        return render_template("loan_val.html", prediction_text=f"Loan Eligibility: {valid[output]}\n"
                                                                 f"Please go to the nearest branch to finalise the loan")
 
 
@@ -85,12 +79,12 @@ def upload():
 
     # Check if the file has a valid filename
     if file.filename == '':
-        return render_template("dummy.html", error_="No selected file")
+        return render_template("dummy.html", error_="Please upload a file.")
 
     # Check columns
     cols = ['Loan_ID', 'Gender', 'Married', 'Dependents', 'Education', 'Self_Employed', 'ApplicantIncome',
             'CoapplicantIncome', 'LoanAmount', 'Loan_Amount_Term', 'Credit_History', 'Property_Area']
-    # f_name = condition.detect_file_type(file)
+
     file_type = condition.detect_file_type(file)
 
     try:
@@ -113,15 +107,15 @@ def upload():
 
     # Assuming you're working with a CSV file
     if file:
-        # Preprocessing was performed in the condition.py file called the clean() function
+        # Preprocessing was performed in the condition.py file; called the cleaner() function
         test_id = df['Loan_ID']
-        abc = condition.cleaner(df)
+        cleaned_data = condition.cleaner(df)
 
         # Make predictions using your model
-        predictions = model.predict(abc)
+        predictions = model.predict(cleaned_data)
         prediction = list(predictions)
 
-        # Mapping the prediction to make it presentable
+        # Mapping the prediction to make it presentable; called the p_mapping() function in condition.py
         mapas = condition.p_mapping(test_id, prediction)
 
         # Returning the predictions to display them as needed
