@@ -10,7 +10,6 @@ st.set_page_config(
 st.title("Welcome to G-oan")
 st.subheader("Your Trusted Financial Partner")
 
-# paths = os.path.join(".", "loan.gif")
 paths = os.path.join(os.path.dirname(__file__), "loan.gif")
 file_ = open(paths, "rb")
 contents = file_.read()
