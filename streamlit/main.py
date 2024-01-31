@@ -11,7 +11,8 @@ st.title("Welcome to G-oan")
 st.subheader("Your Trusted Financial Partner")
 
 # paths = os.path.join(".", "loan.gif")
-file_ = open("assets/loan.gif", "rb")
+paths = os.path.join(os.path.dirname(__file__), "loan.gif")
+file_ = open(paths, "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 st.markdown(
