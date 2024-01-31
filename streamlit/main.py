@@ -7,8 +7,8 @@ st.set_page_config(
     page_icon="💰",
 )
 
-FILE = os.path.abspath("GIFFY.gif")
-file_ = open(FILE, "rb")
+
+file_ = open("GIFFY.gif", "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 file_.close()
