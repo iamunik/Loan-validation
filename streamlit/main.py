@@ -7,22 +7,18 @@ st.set_page_config(
     page_icon="💰",
 )
 
-
-file_ = open("GIFFY.gif", "rb")
-contents = file_.read()
-data_url = base64.b64encode(contents).decode("utf-8")
-file_.close()
-
-
 st.title("Welcome to G-oan")
 
 st.subheader("Your Trusted Financial Partner")
 
+file_ = open("GIFFY.gif", "rb")
+contents = file_.read()
+data_url = base64.b64encode(contents).decode("utf-8")
 st.markdown(
     f'<img src="data:image/gif;base64,{data_url}" width="500" height="250">',
     unsafe_allow_html=True,
 )
-
+file_.close()
 
 st.write("""<br>
 At <b>G-oan</b>, we understand that life is full of opportunities and challenges that may require a helping hand.  
