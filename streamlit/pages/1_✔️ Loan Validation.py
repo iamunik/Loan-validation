@@ -12,7 +12,7 @@ st.set_page_config(
 st.title("Loan Validation")
 st.text("Please fill the form to see if you're eligible for a loan.")
 
-model = joblib.load("./assets/loan_model_class.pkl")
+model = joblib.load("./loan_model_class.pkl")
 
 try:
     with st.form("My Form", clear_on_submit=True):
