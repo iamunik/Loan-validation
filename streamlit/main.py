@@ -11,7 +11,7 @@ st.title("Welcome to G-oan")
 
 st.subheader("Your Trusted Financial Partner")
 
-file_ = open("GIFFY.gif", "rb")
+file_ = open("loan.gif", "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 st.markdown(
