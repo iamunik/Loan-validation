@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import condition
 import joblib
+import os
 
 
 st.set_page_config(
@@ -9,7 +10,10 @@ st.set_page_config(
     page_icon="💼",
 )
 
-model = joblib.load("./assets/loan_model_class.pkl")
+parent_dir = os.path.dirname(os.path.dirname(__file__))
+path = model_path = os.path.join(parent_dir, "loan_model_class.pkl")
+
+model = joblib.load(path)
 
 upload_file_extension = st.selectbox("What type of file do you want to upload?", ['CSV', 'XLS', 'XLSX'], index=None)
 st.write(f"You want to upload a/an {upload_file_extension} file.")

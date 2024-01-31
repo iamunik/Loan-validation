@@ -1,6 +1,7 @@
 from condition import education_, relation, gende_r, pro_perty, employ_ment
 import streamlit as st
 import numpy as np
+import os
 import joblib
 
 
@@ -12,7 +13,10 @@ st.set_page_config(
 st.title("Loan Validation")
 st.text("Please fill the form to see if you're eligible for a loan.")
 
-model = joblib.load("./loan_model_class.pkl")
+parent_dir = os.path.dirname(os.path.dirname(__file__))
+path = model_path = os.path.join(parent_dir, "loan_model_class.pkl")
+
+model = joblib.load(path)
 
 try:
     with st.form("My Form", clear_on_submit=True):
