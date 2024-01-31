@@ -1,4 +1,5 @@
 import streamlit as st
+import os
 import base64
 
 st.set_page_config(
@@ -6,8 +7,8 @@ st.set_page_config(
     page_icon="💰",
 )
 
-
-file_ = open("GIFFY.gif", "rb")
+FILE = os.path.abspath("GIFFY.gif")
+file_ = open(FILE, "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 file_.close()
