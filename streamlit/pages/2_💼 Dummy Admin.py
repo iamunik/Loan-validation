@@ -3,12 +3,13 @@ import pandas as pd
 import condition
 import joblib
 
+
 st.set_page_config(
     page_title="Admin file upload",
     page_icon="💼",
 )
 
-model = joblib.load("./loan_model_class.pkl")
+model = joblib.load("./assets/loan_model_class.pkl")
 
 upload_file_extension = st.selectbox("What type of file do you want to upload?", ['CSV', 'XLS', 'XLSX'], index=None)
 st.write(f"You want to upload a/an {upload_file_extension} file.")

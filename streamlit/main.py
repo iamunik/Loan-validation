@@ -10,8 +10,8 @@ st.set_page_config(
 st.title("Welcome to G-oan")
 st.subheader("Your Trusted Financial Partner")
 
-paths = os.path.join(".", "loan.gif")
-file_ = open(paths, "rb")
+# paths = os.path.join(".", "loan.gif")
+file_ = open("assets/loan.gif", "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 st.markdown(
