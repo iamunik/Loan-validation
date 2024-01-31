@@ -1,5 +1,7 @@
-import streamlit as st
 import os
+
+import streamlit as st
+# import os
 import base64
 
 st.set_page_config(
@@ -8,10 +10,10 @@ st.set_page_config(
 )
 
 st.title("Welcome to G-oan")
-
 st.subheader("Your Trusted Financial Partner")
 
-file_ = open("loan.gif", "rb")
+paths = os.path.join(".", "loan.gif")
+file_ = open(paths, "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 st.markdown(
