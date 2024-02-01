@@ -11,7 +11,7 @@ st.set_page_config(
 )
 
 st.title("Loan Validation")
-st.text("Please fill the form to see if you're eligible for a loan.")
+st.write("Please fill the form to see if you're eligible for a loan.")
 
 parent_dir = os.path.dirname(os.path.dirname(__file__))
 path = model_path = os.path.join(parent_dir, "loan_model_class.pkl")

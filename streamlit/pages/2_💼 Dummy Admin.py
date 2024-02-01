@@ -9,12 +9,23 @@ st.set_page_config(
     page_title="Admin file upload",
     page_icon="💼",
 )
-
+# Loading the machine learning model
 parent_dir = os.path.dirname(os.path.dirname(__file__))
-path = model_path = os.path.join(parent_dir, "loan_model_class.pkl")
+model_path = os.path.join(parent_dir, "loan_model_class.pkl")
+model = joblib.load(model_path)
 
-model = joblib.load(path)
 
+st.title("Dummy Admin Page")
+
+# Download button for the test data
+st.write("Download the csv file below to test the algorithm")
+
+df = pd.read_csv(os.path.join(parent_dir, "test_loan.csv"))
+test_file = st.download_button(label="Download test data",
+                               data=df.to_csv().encode('utf-8'),
+                               file_name="Test data.csv")
+
+# Upload file for the web app
 upload_file_extension = st.selectbox("What type of file do you want to upload?", ['CSV', 'XLS', 'XLSX'], index=None)
 st.write(f"You want to upload a/an {upload_file_extension} file.")
 

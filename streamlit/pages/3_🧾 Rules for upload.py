@@ -9,11 +9,11 @@ st.write("""
                # File Upload Guidelines
                <hr>
 
-               <h2><u>Introduction:</u></h2>
+               <h3><u>Introduction:</u></h3>
                <p>Welcome to our file upload guideline page! This platform allows users to upload spreadsheet files to
                 test a machine learning algorithm designed to predict the validity of customers for loan collection.</p>
 
-               <h2><u>File Types:</u></h2>
+               <h3><u>File Types:</u></h3>
                <p>You can upload files in the following formats:
                     <ul>
                          <li>Comma Seperated Values (.csv)</li>
@@ -21,17 +21,17 @@ st.write("""
                     </ul>
                </p>
 
-               <h2><u>User Authentication:</u></h2>
+               <h3><u>User Authentication:</u></h3>
                <p>No user authentication is required for this test run. Feel free to upload files without the need to 
                log in.</p>
 
-               <h2><u>Privacy and Security:</u></h2>
+               <h3><u>Privacy and Security:</u></h3>
                <p>Rest assured, uploaded files are not stored on our servers. They are used solely for making 
                predictions, and your privacy and security are not compromised, as files are not retained and also please
             note that file uploads are not moderated or reviewed before processing, hence the need for users to read 
             through the <b>"Acceptable Content"</b> section thoroughly</p>
 
-               <h2><u>Acceptable Content:</u></h2>
+               <h3><u>Acceptable Content:</u></h3>
                <p>Uploaded files must follow a specific format and contain the following columns names with the 
                corresponding data types:</p>
 
@@ -147,19 +147,17 @@ st.write("""
                     </li>
                </ul>
 
-               <h2><u>Ownership:</u></h2>
+               <h3><u>Ownership:</u></h3>
                <p>Everyone has the right to upload content. There are no restrictions on who can submit files for 
                testing.</p>
 
-               <h2><u>User Agreement:</u></h2>
+               <h3><u>User Agreement:</u></h3>
                <p>No user agreements are required for file uploads. You can start uploading right away.</p>
 
-               <h2><u>User Support:</u></h2>
+               <h3><u>User Support:</u></h3>
                <p class="mb-5">Should you have any questions or concerns regarding file uploads or the testing process 
                or if you need to reach out for any reason, our user support team is here to assist you. Fill the 
-               <a href="https://oluwaseun-ogundeko.netlify.app/contact">Contact form on my portfolio</a> stating your
+               <a href="https://oluwaseun-ogundeko.netlify.app/contact">Contact form</a> stating your
                issue and potential upgrades for assistance.</p>
 
 """, unsafe_allow_html=True)
-
-st.link_button("Back to main", "main.py")

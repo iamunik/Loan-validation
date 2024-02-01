@@ -15,7 +15,7 @@ file_ = open(paths, "rb")
 contents = file_.read()
 data_url = base64.b64encode(contents).decode("utf-8")
 st.markdown(
-    f'<img src="data:image/gif;base64,{data_url}" width="500" height="250">',
+    f'<img src="data:image/gif;base64,{data_url}" width="80%" height="30%">',
     unsafe_allow_html=True,
 )
 file_.close()
@@ -38,7 +38,8 @@ st.markdown("""
 ### File Upload Prediction:
 This part of the web app is for the admin, incase there are customers that comes to check their eligibility and there 
 are back logs the admin can upload a csv file or an excel file for the purpose of predicting the customers 
-that are eligible for a loan.
+that are eligible for a loan. <b>A .csv file for download has been provided for you to use to test the upload</b>. 
+Please feel free to go through the test file to confirm the authenticity.
 
 ### Limitations:
 - This web app is not global for all loan companies, that is because the ML algorithm in use was created with data from
