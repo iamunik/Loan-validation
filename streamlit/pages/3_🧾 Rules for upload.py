@@ -1,7 +1,7 @@
 import streamlit as st
 
 st.set_page_config(
-    page_title="Admin file upload",
+    page_title="Rules for file upload",
     page_icon="🧾",
 )
 

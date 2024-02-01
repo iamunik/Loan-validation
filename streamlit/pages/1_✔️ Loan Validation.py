@@ -6,7 +6,7 @@ import joblib
 
 
 st.set_page_config(
-    page_title="Admin file upload",
+    page_title="Loan Validation",
     page_icon="✔️",
 )
 
