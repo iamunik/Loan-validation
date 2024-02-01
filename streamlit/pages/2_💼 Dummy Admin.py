@@ -22,7 +22,7 @@ st.write("Download the csv file below to test the algorithm")
 
 df = pd.read_csv(os.path.join(parent_dir, "test_loan.csv"))
 test_file = st.download_button(label="Download test data",
-                               data=df.to_csv().encode('utf-8'),
+                               data=df.to_csv(index=False).encode('utf-8'),
                                file_name="Test data.csv")
 
 # Upload file for the web app
@@ -71,9 +71,9 @@ try:
                 mapas = condition.p_mapping(test_id, prediction)
                 st.table(mapas)
         except KeyError:
-            st.warning("Please visit the Rules for Upload page to see how to arrange your data.")
+            st.warning("Please visit the Rules for Upload page to see what data is needed.")
     else:
         st.warning("Select a file type")
 
 except ValueError:
-    st.warning("No file uploaded!")
+    st.warning("Please confirm that a file is uploaded")
