@@ -15,16 +15,16 @@ After getting the data from the ..... I was given the task to clean this data, I
 
 2. <b>Data Cleaning</b>: This is where I perform cleaning by going through each of the columns of the data set
 
-3. <b>Data Validation</b>: This is where I look at the previous dataset (pre cleaning) and the new dataset (post cleaning) and appreciate (creator of python) for creating a sweet language.
+3. <b>Data Validation</b>: This is where I look at the previous dataset (pre cleaning) and the new dataset (post cleaning) and appreciate <b>Guido Van Rossum</b> for creating a sweet language.
 
 4. <b>Extract the clean data</b>: and after all that, save the cleaned data.
 
 ### Data Analysis 
 After cleaning with python and extracting the data, I took the already cleaned data to PowerBi to perform a proper analysis based on the guiding quesiton.
 
-<a href=#><img src='#'></a><br>
+<img src='loan.png' style="width: 70%; height:60%"><br>
 (PowerBi dashboard navypro)<br>
-Click to visit the dashboard.
+<a href='https://www.novypro.com/project/g-oan-loan-validation-dashboard'>Click to visit the dashboard.</a>
 
 
 ## Guiding Question
