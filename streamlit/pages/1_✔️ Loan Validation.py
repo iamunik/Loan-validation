@@ -4,7 +4,6 @@ import numpy as np
 import os
 import joblib
 
-
 st.set_page_config(
     page_title="Loan Validation",
     page_icon="✔️",
@@ -19,6 +18,7 @@ path = model_path = os.path.join(parent_dir, "loan_model_class.pkl")
 model = joblib.load(path)
 
 try:
+    # The form input
     with st.form("My Form", clear_on_submit=True):
         col1, col2 = st.columns(2)
         with col1:
@@ -55,22 +55,32 @@ try:
             employment = st.radio("Employment Status", [0, 1], index=None, format_func=employ_ment)
 
         property_area = property_area
+        # Submit button
         submitted = st.form_submit_button("Submit")
         if submitted:
-            lst = [dependents, applicant, co_applicant, credit_history, loan_duration, loan_amount, education, relationship,
-                   employment, gender, property_area]
+            lst = [dependents, applicant, co_applicant, credit_history, loan_duration, loan_amount, education,
+                   relationship, employment, gender, property_area]
 
+            # Passing the features into a list and then an array for prediction
             int_features = [int(x) for x in lst]
             final_features = [np.array(int_features)]
-            prediction = model.predict(final_features)
+            predictions = model.predict_proba(final_features)
 
-            output = prediction[0]
+            # Checking the eligibility of clients in percentage
+            if predictions[0, 0] * 100 > predictions[0, 1] * 100:
+                st.error(
+                    f"There is a {round(predictions[0, 0] * 100)}% chance that your loan will not be approved")
 
-            valid = ["No", "Yes"]
+            elif predictions[0, 1] * 100 > predictions[0, 0] * 100:
+                st.success(
+                    f"There is a {round(predictions[0, 1] * 100)}% chance that your loan will be approved")
 
-            if valid[output] == 'Yes':
-                st.success("Eligible for a loan")
             else:
-                st.warning("Not Eligible for a loan")
+                st.warning(
+                    f"There is a {round(predictions[0, 1] * 100)}% chance that Employee Number'"
+                    f"or goes")
+
+    st.markdown("The higher your percentage of eligibility, the higher the chance of getting a loan from us"
+                "<br>Please proceed to a branch closest to you for proper documentation", unsafe_allow_html=True)
 except TypeError:
     st.warning("Please fill the form appropriately.")
