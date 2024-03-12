@@ -28,9 +28,6 @@ def fill_nan(table):        # Filling empty columns and rows
     table['Dependents'] = table['Dependents'].fillna(table['Dependents'].mode()[0])
     # Drop the LOAN ID on the csv file
     table.drop(['Loan_ID'], axis=1, inplace=True)
-    # Creating Total Income column because that's what we trained it with
-    # table['Total_Income'] = table['ApplicantIncome'] + table['CoapplicantIncome']
-    # table.drop(['ApplicantIncome', 'CoapplicantIncome'], axis=1, inplace=True)
     return table
 
 
@@ -116,10 +113,3 @@ def employ_ment(employ):
         return "Employee"
     else:
         return "Self Employed"
-
-
-# This function was created to accept csv files from the uploaded file
-def csv_read(optin, aa):
-    if optin == "csv":
-        ax = pd.read_csv(aa)
-        return ax
