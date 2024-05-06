@@ -1,8 +1,5 @@
 <h1 style='text-align:center; border-bottom:1px dotted white;'> G-OAN </h1>
 
-## About Dataset
-LOREM IPSUM
-
 ## Introduction
 G-OAN is a fictonal company loan company that want to understand why and how each person is graded 'eligible for a loan' and they are looking to use the data gotten to automate the entire loan process so as to reduce manual input for the validity of each customer.
 
